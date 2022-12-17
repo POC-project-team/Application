@@ -13,12 +13,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         supportActionBar?.hide()
         setContentView(binding.root)
-
         val fragmentManager = supportFragmentManager
         fragmentManager.commit {
             add(binding.fragment.id, LoginFragment())
         }
 
-        val flag = 0
     }
 }

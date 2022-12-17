@@ -18,7 +18,7 @@ class LoginViewModel: ViewModel() {
     val status: LiveData<StatusValue> = _status
     val response: LiveData<LoginResponse> = _response
 
-    private fun login(email: String, password: String) {
+    fun login(email: String, password: String) {
         viewModelScope.launch {
             _status.value = StatusValue.LOADING
             try {

@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey_vectors">#AAB8C6</color>
     <color name="background_layout">#F0F3F8</color>
+    <color name="text_view_grey">#C0C0C0</color>
+    <color name="error">#A60101</color>
 </resources>

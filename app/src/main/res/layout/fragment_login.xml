@@ -84,6 +84,16 @@
         android:visibility="invisible"
         />
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/loadingBar"
+        android:visibility="invisible" />
+
     <Button
         android:id="@+id/login"
         android:layout_width="150dp"

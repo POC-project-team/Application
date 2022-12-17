@@ -7,5 +7,9 @@
     <string name="register">зарегистрироваться</string>
     <string name="forgot_password">Восстановить пароль</string>
     <string name="or">Или</string>
+    <string name="not_email_error">Введите email правильного формата</string>
+    <string name="short_password">"Введите пароль длиной от 8 до 16 символов"</string>
+    <string name="not_enough_numbers_password">"Пароль должен содержать как минимум 3 цифры"</string>
+    <string name="special_symbols_password">Пароль должен содержать специальные символы</string>
 
 </resources>

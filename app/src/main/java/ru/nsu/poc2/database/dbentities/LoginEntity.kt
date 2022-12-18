@@ -10,5 +10,4 @@ data class LoginEntity(
     @PrimaryKey val id: Int,
     @ColumnInfo(name = "email") val email: String,
     @ColumnInfo(name = "password") val password: String,
-    @ColumnInfo(name = "short_password") val shortPassword: String
 )

@@ -24,6 +24,7 @@ class LoginViewModel: ViewModel() {
             try {
                 _response.value = Api.apiService.auth(LoginRequest(email, password))
                 _status.value = StatusValue.SUCCESS
+                storeAccount(email, password)
                 Log.d(LogTags.LOGIN, "Successfully logged in")
             } catch (e: Exception){
                 _status.value = StatusValue.ERROR
@@ -32,4 +33,7 @@ class LoginViewModel: ViewModel() {
         }
     }
 
+    private fun storeAccount(email: String, password: String) {
+
+    }
 }

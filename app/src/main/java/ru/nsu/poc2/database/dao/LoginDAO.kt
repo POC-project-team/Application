@@ -9,5 +9,5 @@ interface LoginDAO {
     @Query("SELECT * FROM LOGINENTITY")
     fun getAll(): List<LoginEntity>
     @Query("SELECT * FROM LOGINENTITY WHERE email = :email")
-    fun getAccountsByLogin(email: String): List<LoginEntity>
+    fun getAccountsByLogin(email: String): LoginEntity
 }

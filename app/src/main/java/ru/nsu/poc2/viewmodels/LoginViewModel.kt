@@ -1,6 +1,7 @@
 package ru.nsu.poc2.viewmodels
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,6 +27,7 @@ class LoginViewModel: ViewModel() {
                 _status.value = StatusValue.SUCCESS
                 storeAccount(email, password)
                 Log.d(LogTags.LOGIN, "Successfully logged in")
+                parseJWT(response)
             } catch (e: Exception){
                 _status.value = StatusValue.ERROR
                 Log.d(LogTags.LOGIN, "Error while logging in $e")
@@ -33,7 +35,13 @@ class LoginViewModel: ViewModel() {
         }
     }
 
+    private fun parseJWT(response: LiveData<LoginResponse>) {
+        Log.d(LogTags.LOGIN, "${response.value}")
+
+    }
+
     private fun storeAccount(email: String, password: String) {
 
     }
+
 }

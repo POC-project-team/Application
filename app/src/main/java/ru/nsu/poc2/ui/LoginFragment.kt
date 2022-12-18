@@ -1,5 +1,6 @@
 package ru.nsu.poc2.ui
 
+import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import ru.nsu.poc2.PocApplication
 import ru.nsu.poc2.R
 import ru.nsu.poc2.databinding.FragmentLoginBinding
@@ -18,14 +20,11 @@ import ru.nsu.poc2.utils.LogTags
 import ru.nsu.poc2.viewmodels.LoginViewModel
 import ru.nsu.poc2.viewmodels.LoginViewModelFactory
 
+@Suppress("WHEN_ENUM_CAN_BE_NULL_IN_JAVA")
 class LoginFragment: Fragment(){
     private var binding: FragmentLoginBinding? = null
-    private val viewModel: LoginViewModel by activityViewModels{
+    private val loginViewModel: LoginViewModel by activityViewModels {
         LoginViewModelFactory((activity?.application as PocApplication).database.loginDao())
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
@@ -35,6 +34,7 @@ class LoginFragment: Fragment(){
     ): View {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         loginObserver()
+        Log.d(LogTags.LOGIN, "${PocApplication()}")
         binding!!.login.setOnClickListener {
             login()
         }
@@ -66,11 +66,11 @@ class LoginFragment: Fragment(){
             binding!!.errorEmail.visibility = View.VISIBLE
             return
         }
-        viewModel.login(binding!!.email.text.toString(), binding!!.password.text.toString())
+        loginViewModel.login(binding!!.email.text.toString(), binding!!.password.text.toString())
     }
 
     private fun loginObserver() {
-        viewModel.status.observe(viewLifecycleOwner){
+        loginViewModel.status.observe(viewLifecycleOwner){
             when(it){
                 StatusValue.ERROR -> {
                     binding!!.loadingBar.visibility = View.INVISIBLE

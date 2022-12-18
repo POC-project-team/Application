@@ -11,15 +11,13 @@ import ru.nsu.poc2.database.dbentities.LoginEntity
 
 abstract class AppDataBase : RoomDatabase() {
     abstract fun loginDao(): LoginDAO
-
     companion object {
         @Volatile
         private var INSTANCE: AppDataBase? = null
         fun getDatabase(context: Context): AppDataBase {
             return INSTANCE ?: synchronized(this) {
                 val instance =
-                    Room.databaseBuilder(context, AppDataBase::class.java, "app_database")
-                        .createFromAsset("database/app.db").build()
+                    Room.databaseBuilder(context, AppDataBase::class.java, "app_database").build()
                 INSTANCE = instance
                 instance
             }

@@ -73,7 +73,7 @@ class LoginFragment: Fragment(){
             when(it){
                 StatusValue.ERROR -> {
                     binding!!.loadingBar.visibility = View.INVISIBLE
-                    Toast.makeText(context, "Error while login", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.error_while_login), Toast.LENGTH_SHORT).show()
                 }
                 StatusValue.SUCCESS->{
                     binding!!.loadingBar.visibility = View.INVISIBLE

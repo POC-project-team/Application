@@ -13,5 +13,8 @@
     <string name="special_symbols_password">Пароль должен содержать специальные символы</string>
     <string name="registration">Регистрация</string>
     <string name="re_enter_password">Повторите пароль</string>
+    <string name="error_while_login">Ошибка во время входа</string>
+    <string name="error_while_registration">Ошибка во время регистрации</string>
+    <string name="successful_registration">Успешная регистрация</string>
 
 </resources>

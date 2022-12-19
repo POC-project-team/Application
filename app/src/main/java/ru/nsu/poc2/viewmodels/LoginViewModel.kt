@@ -64,6 +64,10 @@ class LoginViewModel(private val loginDAO: LoginDAO): ViewModel() {
         editor.putString("token", response.value!!.token)
         editor.apply()
     }
+
+    private fun findUserInDatabase(){
+
+    }
 }
 class LoginViewModelFactory(private val loginDAO: LoginDAO) : ViewModelProvider.Factory{
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

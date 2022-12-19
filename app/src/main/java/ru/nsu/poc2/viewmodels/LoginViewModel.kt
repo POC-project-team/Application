@@ -5,7 +5,6 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.*
-import at.favre.lib.crypto.bcrypt.BCrypt
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import ru.nsu.poc2.PocApplication

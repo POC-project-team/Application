@@ -34,7 +34,6 @@ class LoginFragment: Fragment(){
     ): View {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         loginObserver()
-        Log.d(LogTags.LOGIN, "${PocApplication()}")
         binding!!.login.setOnClickListener {
             login()
         }

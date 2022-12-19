@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val fragmentManager = supportFragmentManager
         fragmentManager.commit {
-            add(binding.fragment.id, LoginFragment())
+            add(binding.navHostFragment.id, LoginFragment())
         }
 
     }

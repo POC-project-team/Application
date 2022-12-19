@@ -4,12 +4,18 @@
     <string name="enter_email">Введите e-mail</string>
     <string name="enter_password">Введите пароль</string>
     <string name="login">Войти</string>
-    <string name="register">зарегистрироваться</string>
+    <string name="register">Зарегистрироваться</string>
     <string name="forgot_password">Восстановить пароль</string>
     <string name="or">Или</string>
     <string name="not_email_error">Введите email правильного формата</string>
     <string name="short_password">"Введите пароль длиной от 8 до 16 символов"</string>
     <string name="not_enough_numbers_password">"Пароль должен содержать как минимум 3 цифры"</string>
     <string name="special_symbols_password">Пароль должен содержать специальные символы</string>
+    <string name="registration">Регистрация</string>
+    <string name="re_enter_password">Повторите пароль</string>
+    <string name="error_while_login">Ошибка во время входа</string>
+    <string name="error_while_registration">Ошибка во время регистрации</string>
+    <string name="successful_registration">Успешная регистрация</string>
+    <string name="not_equal_password">Пароли не совпадают</string>
 
 </resources>

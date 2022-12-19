@@ -17,8 +17,6 @@ class FieldValidators {
                 it.isDigit()
             }
             if (numbersAmount<3) return R.string.not_enough_numbers_password
-            val regex = Regex("~!@#\$%^&*+-")
-            if (!field.contains(regex)) return R.string.special_symbols_password
             return 0
         }
     }

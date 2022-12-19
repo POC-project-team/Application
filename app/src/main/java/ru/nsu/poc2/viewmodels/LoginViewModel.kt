@@ -3,26 +3,15 @@ package ru.nsu.poc2.viewmodels
 import android.app.Application
 import android.content.Context
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.*
-import at.favre.lib.crypto.bcrypt.BCrypt
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
-import ru.nsu.poc2.PocApplication
-import ru.nsu.poc2.database.AppDataBase
 import ru.nsu.poc2.database.dao.LoginDAO
 import ru.nsu.poc2.database.dbentities.LoginEntity
-import ru.nsu.poc2.network.Api
 import ru.nsu.poc2.network.StatusValue
 import ru.nsu.poc2.network.json.login.LoginRequest
 import ru.nsu.poc2.network.json.login.LoginResponse
 import ru.nsu.poc2.repositories.LoginRepository
 import ru.nsu.poc2.utils.LogTags
-import java.security.MessageDigest
-import java.util.concurrent.Flow
-import javax.crypto.Cipher
-import javax.crypto.KeyGenerator
-import javax.crypto.SecretKey
 
 class LoginViewModel(private val loginDAO: LoginDAO): ViewModel() {
     private val _status = MutableLiveData<StatusValue>()
@@ -63,6 +52,10 @@ class LoginViewModel(private val loginDAO: LoginDAO): ViewModel() {
         val editor = sharedPreferences.edit()
         editor.putString("token", response.value!!.token)
         editor.apply()
+    }
+
+    private fun findUserInDatabase(){
+
     }
 }
 class LoginViewModelFactory(private val loginDAO: LoginDAO) : ViewModelProvider.Factory{

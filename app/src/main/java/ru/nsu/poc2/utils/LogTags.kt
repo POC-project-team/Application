@@ -2,6 +2,7 @@ package ru.nsu.poc2.utils
 
 class LogTags {
     companion object{
-        val LOGIN = "Login"
+        const val LOGIN = "Login"
+        const val REGISTRATION = "registration"
     }
 }

@@ -7,6 +7,8 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 import ru.nsu.poc2.network.json.login.LoginRequest
 import ru.nsu.poc2.network.json.login.LoginResponse
+import ru.nsu.poc2.network.json.registration.RegistrationRequest
+import ru.nsu.poc2.ui.RegistrationFragment
 
 private const val BASE_URL = "http://192.168.31.98:60494"
 private val retrofit = Retrofit.Builder()
@@ -17,6 +19,8 @@ private val retrofit = Retrofit.Builder()
 interface ApiService {
     @POST("/auth")
     suspend fun auth(@Body loginRequest: LoginRequest): LoginResponse
+    @POST("/signup")
+    suspend fun register(@Body registrationRequest: RegistrationRequest)
 }
 
 object Api {

@@ -11,6 +11,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 import ru.nsu.poc2.PocApplication
 import ru.nsu.poc2.R
 import ru.nsu.poc2.databinding.FragmentLoginBinding
@@ -26,7 +30,7 @@ class LoginFragment: Fragment(){
     private val loginViewModel: LoginViewModel by activityViewModels {
         LoginViewModelFactory((activity?.application as PocApplication).database.loginDao())
     }
-
+    private lateinit var navController: NavController
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,11 +38,23 @@ class LoginFragment: Fragment(){
     ): View {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         loginObserver()
-        Log.d(LogTags.LOGIN, "${PocApplication()}")
         binding!!.login.setOnClickListener {
             login()
         }
+        binding!!.register.setOnClickListener {
+            startRegisterFragment()
+        }
         return binding!!.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        navController = Navigation.findNavController(requireView())
+    }
+
+    private fun startRegisterFragment() {
+        Log.d(LogTags.LOGIN, "Starting registration fragment")
+        navController.navigate(R.id.registrationFragment)
+
     }
 
     private fun login() {
@@ -74,7 +90,7 @@ class LoginFragment: Fragment(){
             when(it){
                 StatusValue.ERROR -> {
                     binding!!.loadingBar.visibility = View.INVISIBLE
-                    Toast.makeText(context, "Error while login", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.error_while_login), Toast.LENGTH_SHORT).show()
                 }
                 StatusValue.SUCCESS->{
                     binding!!.loadingBar.visibility = View.INVISIBLE

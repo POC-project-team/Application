@@ -45,9 +45,9 @@ class RegistrationFragment : Fragment() {
         errorEmail.visibility = View.INVISIBLE
         errorPassword.visibility = View.INVISIBLE
         errorConfirmPassword.visibility = View.INVISIBLE
-        if (FieldValidators.validateFieldsNotEmpty(email)
-            && FieldValidators.validateFieldsNotEmpty(password)
-            && FieldValidators.validateFieldsNotEmpty(confirmPassword)
+        if (!FieldValidators.validateFieldsNotEmpty(email)
+            && !FieldValidators.validateFieldsNotEmpty(password)
+            && !FieldValidators.validateFieldsNotEmpty(confirmPassword)
         ) {
             errorEmail.text = getString(R.string.enter_email)
             errorPassword.text = getString(R.string.enter_password)
@@ -57,8 +57,8 @@ class RegistrationFragment : Fragment() {
             errorConfirmPassword.visibility = View.VISIBLE
             return
         }
-        if (FieldValidators.validateFieldsNotEmpty(email)
-            && FieldValidators.validateFieldsNotEmpty(password)
+        if (!FieldValidators.validateFieldsNotEmpty(email)
+            && !FieldValidators.validateFieldsNotEmpty(password)
         ) {
             errorEmail.text = getString(R.string.enter_email)
             errorPassword.text = getString(R.string.enter_password)
@@ -66,20 +66,25 @@ class RegistrationFragment : Fragment() {
             errorPassword.visibility = View.VISIBLE
             return
         }
-        if (FieldValidators.validateFieldsNotEmpty(email)) {
+        if (!FieldValidators.validateFieldsNotEmpty(email)) {
             errorEmail.text = getString(R.string.enter_email)
             errorEmail.visibility = View.VISIBLE
             return
         }
 
-        if (FieldValidators.validateFieldsNotEmpty(password)) {
+        if (!FieldValidators.validateFieldsNotEmpty(password)) {
             errorPassword.text = getString(R.string.enter_password)
             errorPassword.visibility = View.VISIBLE
             return
         }
-        if (FieldValidators.validateFieldsNotEmpty(confirmPassword)) {
+        if (!FieldValidators.validateFieldsNotEmpty(confirmPassword)) {
             errorConfirmPassword.text = getString(R.string.enter_password)
             errorConfirmPassword.visibility = View.VISIBLE
+            return
+        }
+        if(!FieldValidators.validateEmail(email)){
+            errorEmail.text = getString(R.string.not_email_error)
+            errorEmail.visibility = View.VISIBLE
             return
         }
         val validatePassword = FieldValidators.validatePassword(password)
@@ -117,6 +122,7 @@ class RegistrationFragment : Fragment() {
                         getString(R.string.error_while_registration),
                         Toast.LENGTH_SHORT
                     ).show()
+
                 }
                 StatusValue.LOADING -> {
                     Log.d(LogTags.REGISTRATION, "Loading")

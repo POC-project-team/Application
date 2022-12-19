@@ -16,5 +16,6 @@
     <string name="error_while_login">Ошибка во время входа</string>
     <string name="error_while_registration">Ошибка во время регистрации</string>
     <string name="successful_registration">Успешная регистрация</string>
+    <string name="not_equal_password">Пароли не совпадают</string>
 
 </resources>

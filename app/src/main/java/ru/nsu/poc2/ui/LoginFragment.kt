@@ -15,6 +15,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import ru.nsu.poc2.PocApplication
 import ru.nsu.poc2.R
 import ru.nsu.poc2.databinding.FragmentLoginBinding
@@ -53,8 +54,8 @@ class LoginFragment: Fragment(){
 
     private fun startRegisterFragment() {
         Log.d(LogTags.LOGIN, "Starting registration fragment")
-        navController.navigate(R.id.registrationFragment)
-
+//        navController.navigate(R.id.registrationFragment)
+        findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
     }
 
     private fun login() {

@@ -21,6 +21,7 @@ interface ApiService {
     suspend fun auth(@Body loginRequest: LoginRequest): LoginResponse
     @POST("/signup")
     suspend fun register(@Body registrationRequest: RegistrationRequest)
+
 }
 
 object Api {

@@ -22,6 +22,8 @@ class RegistrationFragment : Fragment() {
     private lateinit var binding: FragmentRegistrationBinding
     private val viewModel: RegistrationViewModel by viewModels()
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -131,4 +133,6 @@ class RegistrationFragment : Fragment() {
             }
         }
     }
+
+
 }

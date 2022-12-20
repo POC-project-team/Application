@@ -27,7 +27,4 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
-    override fun finish() {
-        super.finish()
-    }
 }

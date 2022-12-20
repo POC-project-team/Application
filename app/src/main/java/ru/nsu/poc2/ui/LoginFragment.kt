@@ -57,7 +57,7 @@ class LoginFragment: Fragment(){
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        navController = Navigation.findNavController(requireView())
+        navController = findNavController(requireView())
     }
 
     private fun startRegisterFragment() {

@@ -1,6 +1,7 @@
 package ru.nsu.poc2.ui
 
 import android.app.Application
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -45,7 +46,14 @@ class LoginFragment: Fragment(){
         binding!!.register.setOnClickListener {
             startRegisterFragment()
         }
+        binding!!.restorePassword.setOnClickListener {
+            startRestorePasswordFragment()
+        }
         return binding!!.root
+    }
+
+    private fun startRestorePasswordFragment() {
+        Toast.makeText(context, "На данный момент не поддерживается сервером", Toast.LENGTH_SHORT).show()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -84,6 +92,7 @@ class LoginFragment: Fragment(){
             return
         }
         loginViewModel.login(binding!!.email.text.toString(), binding!!.password.text.toString())
+
     }
 
     private fun loginObserver() {
@@ -95,7 +104,8 @@ class LoginFragment: Fragment(){
                 }
                 StatusValue.SUCCESS->{
                     binding!!.loadingBar.visibility = View.INVISIBLE
-
+                    val intent = Intent(context, HomeActivity::class.java)
+                    startActivity(intent)
                 }
                 StatusValue.LOADING->{
                     binding!!.loadingBar.visibility = View.VISIBLE

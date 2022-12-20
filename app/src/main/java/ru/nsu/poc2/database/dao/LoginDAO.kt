@@ -10,9 +10,7 @@ import ru.nsu.poc2.database.dbentities.LoginEntity
 @Dao
 interface LoginDAO {
     @Query("SELECT * FROM LOGINENTITY")
-    suspend fun getAccounts(): List<LoginEntity>
-    @Query("SELECT * FROM LOGINENTITY WHERE email = :email")
-    fun getAccountsByLogin(email: String): LoginEntity
+    suspend fun getAccount(): LoginEntity
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAccToDB(loginEntity: LoginEntity)
     @Delete

@@ -41,9 +41,33 @@ class LoginViewModel(private val loginDAO: LoginDAO): ViewModel() {
         }
     }
 
+    fun autoLogin(){
+        viewModelScope.launch {
+            _status.value = StatusValue.LOADING
+            try {
+                Log.d(LogTags.AUTOLOGIN, "loading")
+                val loginEntity = findUserInDatabase()
+                if (loginEntity == null){
+                    Log.e(LogTags.AUTOLOGIN, "error no such user")
+                    _status.value = StatusValue.ERROR
+                    return@launch
+                }
+                val email = loginEntity.email
+                val password = loginEntity.password
+                _response.value = repository.auth(LoginRequest(email, password))
+                _status.value = StatusValue.SUCCESS
+                Log.d(LogTags.AUTOLOGIN, "success")
+                parseJWT(_response)
+            } catch (e: Exception){
+                Log.e(LogTags.AUTOLOGIN, "error $e")
+                _status.value = StatusValue.ERROR
+            }
+        }
+    }
+
     private suspend fun addToBd(email: String, password: String) {
         repository.addUser(LoginEntity(0, email, password))
-        Log.d(LogTags.LOGIN, "${repository.getUsers()[0]}")
+        Log.d(LogTags.LOGIN, "${repository.getUser()}")
     }
 
     private fun parseJWT(response: LiveData<LoginResponse>) {
@@ -54,8 +78,8 @@ class LoginViewModel(private val loginDAO: LoginDAO): ViewModel() {
         editor.apply()
     }
 
-    private fun findUserInDatabase(){
-
+    private suspend fun findUserInDatabase() : LoginEntity?{
+        return repository.getUser()
     }
 }
 class LoginViewModelFactory(private val loginDAO: LoginDAO) : ViewModelProvider.Factory{

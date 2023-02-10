@@ -4,5 +4,6 @@ class LogTags {
     companion object{
         const val LOGIN = "Login"
         const val REGISTRATION = "registration"
+        const val AUTOLOGIN = "Autologin"
     }
 }

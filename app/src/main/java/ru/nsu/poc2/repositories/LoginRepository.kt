@@ -12,8 +12,8 @@ class LoginRepository(private val loginDAO: LoginDAO) {
         loginDAO.insertAccToDB(loginEntity)
     }
 
-    suspend fun getUsers(): List<LoginEntity>{
-        return loginDAO.getAccounts()
+    suspend fun getUser(): LoginEntity{
+        return loginDAO.getAccount()
     }
 
     suspend fun auth(loginRequest: LoginRequest): LoginResponse{
